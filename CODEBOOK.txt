@@ -1,0 +1,299 @@
+EXIT AND MIP CODEBOOK
+
+Not all codes will be relevant for each type of question, but the codes are in common across both questions.  
+
+Administrative
+If missing, leave blank.
+1	Indecipherable / 
+	Off topic / 
+	Nonsense 
+2	Other response /
+	No available code
+3	Negative feeling, nonspecific / 
+	(“X sucks”).   
+4	Idiosyncratic conspiracy theory
+
+
+Economic
+100	Economy (general)
+101	Inflation
+102 	Community-level 
+	unemployment/jobs. 
+104 	Taxes (general)
+105	Economic inequality
+
+
+110	Personal costs (general) / 
+	expensive/expense /
+	“cost of living” 
+111	Personal income taxation 
+112	Housing (rent/own)
+113	Personal healthcare costs
+114	Education/childcare costs
+115	Transportation costs/time (subway, no access to bikes, etc.)
+116	Goods/services costs
+117	Food costs
+118	Gas-car or other/energy/utilities 
+119	Poor job prospects
+120 	wages/income 
+
+
+130	Business costs (general) / 
+	“cost of doing business” / 
+	Hostile to business 
+131	Wages (employer side)
+132	Business-related tax
+133	Business regulation
+134 	Lack of business opportunity
+135	Challenges to particular industries
+
+
+140 	Changing economy
+141 	Globalization (but not foreign policy about trade)
+142	Shipping jobs overseas
+143	Automation/Work-related technology
+
+	
+
+
+Conditions of Society (Results)
+
+[Note: 200s]
+
+200 General condition of society
+201 Troubled individuals
+202 Homelessness (non-specific policy)
+203 Mental health (non-specific policy)
+204 Drug addicts / drugs /”Tweakers”
+205 Crowded/too urban/traffic 
+206 Alcoholics / alcoholism / alcohol / DUIs
+207 Immigration (amounts)/Integration/language
+208 Dirty/gross
+209 Decay/infrastructure/run down
+
+210 Crime (amounts, not policies)
+211 Violent crime (amounts, not policies; not rape)
+212 Murder (amounts, not policies)
+213 Property crime (amounts, not policies)
+214 Burglaries (amounts, not policies)
+215 Shootings / gun violence (amounts, not policies)
+216 Domestic terrorism (amounts, not policies)
+217 Gangs (amounts, not policies)
+
+220 Education system
+221 School closures / Pandemic-related learning loss
+222 Teacher unions
+223 Religious schools
+224 Public schools
+225 College tuition
+226 College admissions
+227 "Woke" education (e.g. Drag Queen Story Hour, Critical Race Theory)
+228 "Intolerant" education (e.g. Strict Religious Doctrine)
+
+230 COVID-related social norms
+231 Masking expectations
+232 Ostracism for being unvaccinated
+
+240 Racism
+241 Systemic racism
+242 White supremacy
+243 “Reverse racism”/Anti-white attitudes 
+
+250 Sexism
+251 Gender pay gap
+252 "Mansplaining"
+253 "Manspreading"
+254 Men
+255 Women
+256 Rape culture
+
+260 Intolerance of religion
+261 Ostracism for religious attire
+262 Lack of support for faith community
+263 Lack of religious education options
+264 Lack of religious exemptions for generally-applicable laws
+265 Conspiracy theories about religious groups
+
+270 Religious intolerance [OF NON-RELIGIOUS PEOPLE]
+
+280 Sexual orientation and gender identity
+281 Existence of LGBTQ people
+282 Transgender people
+283 Trans-women in women's sports
+284 "The Gay Agenda"
+
+
+
+
+Partisanship, Ideology, & Policy & Democracy/Process
+
+[Note: 300s]
+
+300 ideologies/parties/partisanship without saying which
+301 liberalism
+302 communism/socialism/”far left”/”antifa”
+303 democrats
+304 big government 
+305 conservatism
+306 fascism / “far right” 
+307 republicans 
+308 authoritarianism (unclear who)
+
+
+
+
+310 general condition of politics without partisan statement
+311 polarization 
+312 gridlock in legislatures / inability to make change
+313 absence of cooperation/absence of bipartisanship
+314 money in politics/lobbying 
+315 threats to lawmakers/judges 
+316 bipartisan moderate conspiracy of establishment 
+
+
+320 complaints about current supreme court/decisions
+321 activist liberal judges
+322 activist conservative judges
+Note: if someone complains about specific case, put it with the policy (dobbs->abortion)
+
+330 general partisan attacks on democracy / R leaning (blaming Republicans), democratic backsliding 
+331 Republican behavior re: Jan 6, Republicans and the “big lie”, Republicans and refusing to accept the 2020 election 
+332 Trump should have been impeached/removed
+
+
+340 partisan attacks on democracy / D leaning
+341 deep state non-compliance with democracy 
+342 black lives matter (negative context)
+343 2020 election fraud, Jan. 6 committee, extent of sentences for Jan. 6 participants, etc.
+344 generalized complaint about anti-Trump “hoax”
+345 immigration policy in the context of electoral consequences
+
+
+
+350 “public policy” (general complaint about nature of public policy)
+351 abortion (non-specific direction)
+352 immigration (non-specific direction)
+353 healthcare (non-specific direction)
+354 Energy/climate (non-specific direction)
+355 infrastructure (non-specific direction)
+356 gun policy/2A (non-specific)
+357 Voting rights (non-specific direction)
+359 Same-sex marriage (non-specific direction)
+3051 speech-related policy
+3052 privacy-related policy
+Note: homelessness goes under conditions of society; economic inequality is under economics
+
+
+360 liberal policies (COMPLAINING ABOUT)
+361 abortion (pro-choice)
+362 immigration (pro) / policy too generous
+363 healthcare (pro)
+364 Green/renewable energy (pro)
+365 infrastructure (pro)
+366 taking away guns/violating 2A 
+367 Voting rights (pro)
+369 Existence of same-sex marriage
+3061 speech-content moderation, liberal-type limits
+
+
+
+370 conservative policies (COMPLAINING ABOUT)
+371 abortion (pro-life)
+372 immigration (con) /restrictions/hostility towards
+373 healthcare (con)
+374 Green/renewable energy (con)
+376 defending 2A/pro-gun policies 
+377 Voting rights (con)
+379 Attempt to abolish same-sex marriage
+3071 speech-related policy, conservative preferred policy
+
+
+
+380 policy process
+381 filibuster in congress
+382 two party system
+383 electoral college
+384 demand for specific reforms
+385 court packing or related
+386 add states (DC/PR)
+
+390 Incompetence
+391 Leaders are idiots
+392 corruption 
+393 leaders are old
+394 leaders don’t care
+395 elite dominance 
+
+
+600 policing related policies (general) / “police”/policing
+601 sentencing/punishment too much
+602 sentencing/punishment too little
+603 rights of people convicted of crimes
+604 not enough policing
+605 too much policing
+606 drug laws too harsh
+607 drug laws not harsh enough
+608 “woke” DAs
+
+
+
+
+Foreign Policy / International Affairs
+
+[Note: 400s]
+
+400 Foreign policy
+401 Defense
+402 Trade
+403 Nuclear war
+404 Cybersecurity
+405 Military spending (levels)
+406 Human rights (abroad, not domestic)
+
+410 Russia
+411 War in Ukraine
+
+420 China
+421 Geopolitical aggression
+
+430 Middle East
+431 Saudi Arabia
+432 Afghanistan
+433 Israel-Palestine conflict
+434 Islamic extremism/terrorism
+
+440 nonspecific military
+441 military weak 
+442 military “woke”
+443 navy size
+444 army size
+445 air force size
+446 defense contractors
+447 military waste
+448 military vax mandates
+
+450 veterans affairs
+
+Personal Considerations
+ [Note: 500s]
+ 
+500   Desirable attributes of other states
+501   Weather preference
+502   Recreational activities
+503   Geographical preference
+504   Cultural preference 
+505   Language preference
+
+510   Family and relationships
+511  moving closer to family 
+512  moving to significant other
+513  dating opportunities
+
+520  specific job opportunities / non-policy
+521  current job relocating or received offer
+522  spouse’s job moved or moving
+
+530  other personal factors
+531  desire to explore / try something new
+532  retirement, seeking community 
+533  expose children to different cultures
