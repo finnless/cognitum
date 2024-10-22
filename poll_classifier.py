@@ -2,6 +2,18 @@ import csv
 import os
 from groq import Groq
 
+# Load environment variables from .env file
+def load_env_variables():
+    if os.path.exists('.env'):
+        with open('.env') as f:
+            for line in f:
+                if line.strip() and not line.startswith('#'):
+                    key, value = line.strip().split('=', 1)
+                    os.environ[key] = value
+
+# Call the function to load environment variables
+load_env_variables()
+
 # Initialize the Groq client
 client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
@@ -11,10 +23,11 @@ with open('CODEBOOK.txt', 'r') as file:
 
 # Read the CSV file
 responses = []
-with open('responses.csv', 'r') as csvfile:
-    reader = csv.reader(csvfile)
+with open('tests/CODING_SHEET_A_test_short.csv', 'r') as csvfile:
+    reader = csv.DictReader(csvfile)
     for row in reader:
-        responses.append(row[0])  # Assuming each row contains a single response
+        response = ', '.join([row['RP108A'], row['RP108B'], row['RP108C']])
+        responses.append((row['caseid'], response))
 
 # Few-shot examples
 few_shot_examples = """
@@ -101,12 +114,13 @@ def classify_response(response):
 
 # Classify all responses
 classified_responses = []
-for response in responses:
+for caseid, response in responses:
+    # TODO build out parsing llm output
     codes = classify_response(response)
-    classified_responses.append((response, codes))
+    classified_responses.append((caseid, response, codes))
 
 # Save the classified responses to a new CSV file
 with open('classified_responses.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(['Survey Response', 'Assigned Codes'])
+    writer.writerow(['Case ID', 'Survey Response', 'Assigned Codes'])
     writer.writerows(classified_responses)
