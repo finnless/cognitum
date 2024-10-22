@@ -149,21 +149,21 @@ You should review the whole installation instructions on the llama-cpp-python re
 The defualt is a MacOS M1 Max.
 
 
-3. Set up your Groq API key in the environment variables.
+References used while installing and troubleshooting, note all have varrying degrees of correctness and usefulness.
 
-## Running the Classifier
-1. Place your survey responses in a file named `responses.csv`.
-2. Ensure the `CODEBOOK.txt` file is in the same directory.
-3. Run the classifier script:
-   ```bash
-   python poll_classifier.py
-   ```
-4. The classified responses will be saved in `classified_responses.csv`.
+https://lmql.ai/docs/lib/generations.html
+https://lmql.ai/docs/models/llama.cpp.html
+https://github.com/eth-sri/lmql/blob/3db7201403da4aebf092052d2e19ad7454158dd7/src/lmql/models/lmtp/backends/llama_cpp_model.py
+https://github.com/eth-sri/lmql/blob/main/src/lmql/api/llm.py#L68
+https://github.com/eth-sri/lmql/blob/main/src/lmql/models/lmtp/README.md
+https://github.com/eth-sri/lmql/blob/3db7201403da4aebf092052d2e19ad7454158dd7/src/lmql/models/lmtp/lmtp_serve.py#L100
+https://llama-cpp-python.readthedocs.io/en/latest/install/macos/
+https://github.com/abetlen/llama-cpp-python?tab=readme-ov-file#installation
 
-## Files
-- `poll_classifier.py`: Main script to classify survey responses.
-- `classifier.py`: Helper functions or classes (currently empty).
-- `CODEBOOK.txt`: Contains the codebook for classifying responses.'
+https://github.com/eth-sri/lmql/issues/350
+https://github.com/eth-sri/lmql/issues/274
+
+
 
 
 This library follows the ____ system for generating outputs.
