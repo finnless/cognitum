@@ -23,19 +23,52 @@ def main():
     print(out)
 
 
-
 @lmql.query(
     model=lmql.model(
-        "llama.cpp:../../../../models/Llama-3.2-3B-Instruct-Q4_0.gguf", 
+        "llama.cpp:../../../../models/Llama-3.2-1B-Instruct-Q4_0.gguf", 
         tokenizer="meta-llama/Llama-3.2-3B-Instruct",
     )
 )
-def prompt():
+def example_prompt(codebook: str):
     '''lmql
     argmax
-        "What is the largest number? Find out by counting up from 1: [RESPONSE]"
-    where
-        len(TOKENS(RESPONSE)) < 400
+        # review to be analyzed
+        review = """We had a great stay. Hiking in the mountains was fabulous and the food is really good."""
+
+        "{codebook}\n"
+        # use prompt statements to pass information to the model
+        "Review: {review}"
+        "Q: What is the underlying sentiment of this review and why?"
+        # template variables like [ANALYSIS] are used to generate text
+        "A:[ANALYSIS]" where not "\n" in ANALYSIS and len(ANALYSIS) < 100
+
+        # use constrained variable to produce a classification
+        "Based on this, the overall sentiment of the message can be considered to be[CLS]"
+    distribution
+    CLS in [" positive", " neutral", " negative"]
+    '''
+
+@lmql.query(
+    model=lmql.model(
+        "llama.cpp:../../../../models/Llama-3.2-1B-Instruct-Q4_0.gguf", 
+        tokenizer="meta-llama/Llama-3.2-3B-Instruct",
+    )
+)
+def prompt(codebook: str, response: str):
+    '''lmql
+    argmax
+        # codebook
+        # use prompt statements to pass information to the model
+        "{codebook}\n"
+        "Coding Examples:\n"
+        "Response: {response}\n"
+        # template variables like [ANALYSIS] are used to generate text
+        # NOTE: for some reason CLS response is not being generated unless another variable like ANALYSIS is used.
+        "Analysis:[ANALYSIS]" where not "\n" in ANALYSIS and len(ANALYSIS) < 100
+        # use constrained variable to produce a classification
+        "Codes:[CLS]"
+    distribution
+    CLS in [" 000", " 001", " 002", " 003", " 100", " 101", " 102", " 200", " 201", " 2011", " 2012", " 202", " 500", " 501", " 502", " 503", " 504", " 505", " 600", " 601", " 602"]
     '''
 
 
@@ -43,8 +76,12 @@ if __name__ == "__main__":
     # main()
     import time
 
+    codebook = open("CODEBOOK.txt", "r").read()
+    response = """Illegal immigration	Economy	Climate"""
+
     start_time = time.time()
-    result = prompt()
+    result = prompt(codebook, response) # erroring because codebook is too long. fixed with --n_ctx 10240
+    # result = example_prompt(codebook)
     end_time = time.time()
 
     print(f"Result: {result}")
