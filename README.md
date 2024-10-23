@@ -182,6 +182,66 @@ The steps for each classification for each case are:
 
 TODO:
 
-Reach out to Joan to cordinate Wednesday codebook review and manually labeling sample of cases.
-
 Adding a Chain of Thought step before final answer might improve results.
+
+
+
+data needs to be a list of tuples with first element being an identifer key and second element being a string of the text to be classified.
+```
+data = [
+    ("id1", "text1"),
+    ("id2", "text2"),
+    ("id3", "text3"),
+]
+
+ds = Dataset(data)
+```
+
+Dataset objects have several methods.
+
+hash method returns a unique hash for the dataset.
+
+```
+ds.hash()
+# "a1b2c3d4e5f6g7h8i9j0"
+```
+
+sample method returns a random sample of the dataset.
+n is the number of samples to return.
+seed is the random seed to use for the sample.
+
+```
+ds.sample(n=3, seed=42)
+# [("id2", "text2"), ("id3", "text3"), ("id1", "text1")]
+```
+
+Model objects are configured as a predictor. You can pass prompts, valid labels, language model objects, and other parameters to the constructor.
+
+```
+m = Model(
+    prompt="Review: {review}",
+    valid_labels=["A", "B", "C"],
+    model=lmql.model("llama.cpp:../../../../models/Llama-3.2-3B-Instruct-Q4_0.gguf"),
+)
+```
+
+Model objects have a predict method that takes a dataset as input and returns a list of predictions. Some models may return return a list of predictions per item in the dataset.
+
+```
+m.predict(ds)
+# [("id1", "A"), ("id2", "B"), ("id3", ["A", "C"])]
+```
+
+You may indicate that the predict method should also return the confidence scores for each prediction.
+
+```
+m.predict(ds, return_confidences=True)
+# [("id1", "A", 0.9), ("id2", "B", 0.8), ("id3", ["A", "C"], [0.7, 0.3])]
+```
+
+You can also use the `evaluate` method to test the model against ground truth data. This returns an overall score for exact matches, partial matches, and false positives.
+
+```
+m.evaluate(ds, gt)
+# {"exact": 0.5, "partial": 0.5, "false_positives": 0.0}
+```
