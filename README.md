@@ -245,3 +245,18 @@ You can also use the `evaluate` method to test the model against ground truth da
 m.evaluate(ds, gt)
 # {"exact": 0.5, "partial": 0.5, "false_positives": 0.0}
 ```
+
+
+
+Prompt could include the codebook.
+
+The codebook ought to be modifed to include a better description of each catetory.
+
+Get fully functioning system working with just those steps before adding RAG. Get the success rate first.
+
+
+Could also do RAG on the 2022 responses and provide context.
+Do this by getting embeddings for each response and then using a vector database to query for similar responses. Add the the whole row to the context under "Similar responses". Indicate that examples use an older version of the codebook, so if uncertian follow the description in the codebook.
+
+Instruct to label 2 if not clear what the correct responce is supposed to be.
+
