@@ -10,7 +10,7 @@ llm = Llama(
 )
 
 
-prompt = """Here are some open-ended responses from the British Election Study to the question "what is the most important issue facing the country?". Please assign one of the following categories to each open ended text response, returning the original response and the most relevant label.
+prompt = """<|start_header_id|>system<|end_header_id|>Here are some open-ended responses from the British Election Study to the question "what is the most important issue facing the country?". Please assign one of the following categories to each open ended text response, returning the original response and the most relevant label. Do not return any other text. Do not return as a list.
 health: include NHS
 education
 election outcome
@@ -65,23 +65,18 @@ For context, Russia invaded Ukraine prior to the fieldwork for this survey, so r
 
 If multiple issues are mentioned, use the label for the first issue mentioned.
 
-Code these cases:
+<|eot_id|><|start_header_id|>user<|end_header_id|>Code these cases:
 a bad economy
 immergration
-
-a bad economy|economy-general
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>a bad economy|economy-general
 immergration|immigration
-
-Code these cases:
+<|eot_id|><|start_header_id|>user<|end_header_id|>Code these cases:
 climate change and unemployment
-
-climate change and unemployment|environment,unemployment
-
-Please only return one code per response (if multiple match use the first issue listed). The correct response should be:
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>climate change and unemployment|environment,unemployment
+<|eot_id|><|start_header_id|>user<|end_header_id|>Please only return one code per response (if multiple match use the first issue listed). The correct response should be:
 
 climate change and unemployment|environment
-
-Code these cases:
+<|eot_id|><|start_header_id|>user<|end_header_id|>Code these cases:
 COVID-19
 Covid
 Covid 19
@@ -97,12 +92,13 @@ COVID-19
 Covid
 inequality
 Covid
-"""
+<|eot_id|><|start_header_id|>assistant<|end_header_id|>"""
 
 start_time = time.time()
 output = llm(
       prompt, # Prompt
       max_tokens=200, # Generate up to 32 tokens, set to None to generate up to the end of the context window
+      stop=["<|eot_id|>"],
       # stop=["Q:", "\n"], # Stop generating just before the model would generate a new question
       echo=True # Echo the prompt back in the output
 ) # Generate a completion, can also call create_completion

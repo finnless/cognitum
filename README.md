@@ -260,3 +260,14 @@ Do this by getting embeddings for each response and then using a vector database
 
 Instruct to label 2 if not clear what the correct responce is supposed to be.
 
+
+After reading [this](https://doi.org/10.1177/20531680241231468), we might want to use text codes instead of numeric codes.
+
+Followed [this course](https://learn.deeplearning.ai/courses/introducing-multimodal-llama-3-2) for prompting using proper chat tokens.
+
+
+
+Can be used for other classification tasks.
+Like:
+Request for comment on policy
+Get valence (+ or -) and category of concern
