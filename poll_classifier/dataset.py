@@ -41,11 +41,15 @@ class DatasetManager:
         if not isinstance(data, list):
             raise DatasetError("Data must be a list")
         
+        seen_ids = set()
         for item in data:
             if not isinstance(item, tuple) or len(item) != 2:
                 raise DatasetError("Each item must be a tuple of (id, text)")
             if not isinstance(item[0], str) or not isinstance(item[1], str):
                 raise DatasetError("Both id and text must be strings")
+            if item[0] in seen_ids:
+                raise DatasetError(f"Duplicate id found: {item[0]}")
+            seen_ids.add(item[0])
     
     def hash(self) -> str:
         """
