@@ -59,6 +59,8 @@ class Model:
         """
         predictions = []
         remaining_items = list(dataset)
+        # TODO: Implement caching
+        # TODO: Experiment with RAG
         
         while remaining_items:
             # Process a batch of items
@@ -131,6 +133,7 @@ class Model:
         Returns:
             List of tuples, each containing result_text, labels, and optionally confidences
         """
+        # TODO: Constrain output to valid labels in self.valid_labels
         @lmql.query(model=self.model)
         def llm_query():
             '''lmql
