@@ -2,7 +2,7 @@ from typing import TypeVar, Union, List, Tuple, Dict, Optional
 from dataclasses import dataclass
 
 # Type aliases
-DataItem = Tuple[str, str]  # (id, text)
+DataItem = Tuple[str, List[str]]  # (id, labels)
 Dataset = List[DataItem]
 Label = str
 Labels = Union[Label, List[Label]]
@@ -22,3 +22,4 @@ class EvaluationMetrics:
     exact: float
     partial: float
     false_positives: float
+    false_negatives: float  # Add this if calculating false negatives

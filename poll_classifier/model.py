@@ -6,7 +6,7 @@ from .types import (
     Confidence, Confidences, PredictionItem, 
     Predictions, EvaluationMetrics
 )
-from .exceptions import ModelError
+from .exceptions import ModelError, DatasetError
 
 class Model:
     """
@@ -110,16 +110,59 @@ class Model:
         Args:
             dataset: Dataset to evaluate
             ground_truth: Ground truth labels
-            
+        
         Returns:
             EvaluationMetrics containing exact match, partial match,
             and false positive rates
+        
+        Raises:
+            DatasetError: If there is a mismatch in item_ids between dataset and ground_truth
         """
-        # Placeholder implementation
+        # Convert ground_truth to a dictionary for quick lookup
+        ground_truth_dict = {item_id: labels for item_id, labels in ground_truth}
+        
+        # Validate that both datasets have the same item_ids
+        dataset_ids = {item_id for item_id, _ in dataset}
+        ground_truth_ids = set(ground_truth_dict.keys())
+        
+        if dataset_ids != ground_truth_ids:
+            missing_in_dataset = ground_truth_ids - dataset_ids
+            missing_in_ground_truth = dataset_ids - ground_truth_ids
+            raise DatasetError(
+                f"Mismatch in item_ids. "
+                f"Missing in dataset: {missing_in_dataset}. "
+                f"Missing in ground_truth: {missing_in_ground_truth}."
+            )
+        
+        exact_matches = 0
+        partial_matches = 0
+        extra_in_dataset = 0
+        extra_in_ground_truth = 0
+        
+        for item_id, predicted_labels in dataset:
+            true_labels = ground_truth_dict[item_id]
+            
+            # Calculate exact matches
+            if set(predicted_labels) == set(true_labels):
+                exact_matches += 1
+            else:
+                # Calculate partial matches
+                if set(predicted_labels) & set(true_labels):
+                    partial_matches += 1
+                
+                # Calculate extra in dataset
+                extra_in_dataset += len(set(predicted_labels) - set(true_labels))
+                
+                # Calculate extra in ground truth
+                extra_in_ground_truth += len(set(true_labels) - set(predicted_labels))
+        
+        total_items = len(dataset)
+        
         return EvaluationMetrics(
-            exact=0.0,
-            partial=0.0,
-            false_positives=0.0
+            exact=exact_matches / total_items,
+            partial=partial_matches / total_items,
+            false_positives=extra_in_dataset / total_items,
+            false_negatives=extra_in_ground_truth / total_items
         )
     
     def _get_model_prediction(self, prompt: str, return_confidences: bool = False) -> List[Union[tuple[str, Labels], tuple[str, Labels, Confidences]]]:

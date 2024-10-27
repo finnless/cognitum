@@ -62,7 +62,7 @@ class TestModel(unittest.TestCase):
         # Placeholder test for evaluate method
         # You would need to implement this based on the actual logic
         evaluation_metrics = self.model.evaluate(self.dataset, self.dataset)
-        self.assertEqual(evaluation_metrics.exact, 0.0)
+        self.assertEqual(evaluation_metrics.exact, 1.0)
         self.assertEqual(evaluation_metrics.partial, 0.0)
         self.assertEqual(evaluation_metrics.false_positives, 0.0)
 
