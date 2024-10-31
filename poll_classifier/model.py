@@ -20,28 +20,33 @@ class Model:
     
     def __init__(
         self,
-        prompt: str,
-        valid_labels: List[str],
         model: Any,
+        prompt: str,
+        valid_labels: Optional[List[str]] = None,
         **kwargs
     ):
         """
         Initialize a new model.
         
         Args:
-            prompt: Template string for formatting input text
-            valid_labels: List of valid classification labels
             model: Language model instance
+            prompt: Template string for formatting input text. There must be
+                a placeholder for the text to classify marked with `{text}`.
+            valid_labels: List of valid classification labels, optional.
             **kwargs: Additional model configuration
         """
+        self.model = model
         self.prompt = prompt
         self.valid_labels = valid_labels
-        self.model = model
         self.config = kwargs
+        
+        # Check that prompt contains {text}
+        if "{text}" not in self.prompt:
+            raise ValueError("Prompt must contain {text} placeholder")
     
     def predict(
-        self, 
-        dataset: Dataset, 
+        self,
+        dataset: Dataset,
         return_confidences: bool = False,
         batch_size: int = 10
     ) -> Predictions:
