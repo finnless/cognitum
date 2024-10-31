@@ -191,8 +191,11 @@ class Model:
             '''
         result = llm_query()
         
+        # Remove the input prompt (prompt) from the output prompt to get the response
+        result_output = result.prompt.split(prompt)[1]
+        
         # Parse the result into a list of (result_text, labels) or (result_text, labels, confidences) tuples
-        lines = result.variables["RESPONSE"].strip().split("\n")
+        lines = result_output.strip().split("\n")
         parsed_results = []
         
         for line in lines:

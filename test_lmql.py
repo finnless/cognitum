@@ -324,7 +324,15 @@ if __name__ == "__main__":
     # result = example_prompt(codebook)
     end_time = time.time()
 
-    print(f"Result: {result}")
+    # print(f"Result: {result}")
+    # Todo parse result.prompt, removing matching input prompt to get output
+    # print(f"PROMPT: {result.prompt}")
+    # Remove the input prompt (british_prompt) from the output prompt to get the response
+    result_prompt = result.prompt.split(british_prompt)[1]
+    print(f"Result PROMPT: {result_prompt}")
+
+
+
     print(f"Result RESPONSE: {result.variables['CODE']}")
     print(f"Time taken: {end_time - start_time} seconds")
 
