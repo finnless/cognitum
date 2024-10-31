@@ -106,45 +106,48 @@ class Model:
     
     def evaluate(
         self, 
-        dataset: Dataset, 
-        ground_truth: Dataset
+        predictions: Predictions,  # Use Predictions type
+        ground_truth: Predictions  # Use Predictions type
     ) -> EvaluationMetrics:
         """
         Evaluate model predictions against ground truth.
         
         Args:
-            dataset: Dataset to evaluate
-            ground_truth: Ground truth labels
+            predictions: List of predictions, each either (id, labels) or 
+                         (id, labels, confidences)
+            ground_truth: Ground truth labels, each either (id, labels) or 
+                          (id, labels, confidences)
         
         Returns:
             EvaluationMetrics containing exact match, partial match,
             and false positive rates
         
         Raises:
-            DatasetError: If there is a mismatch in item_ids between dataset and ground_truth
+            DatasetError: If there is a mismatch in item_ids between predictions and ground_truth
         """
         # Convert ground_truth to a dictionary for quick lookup
-        ground_truth_dict = {item_id: labels for item_id, labels in ground_truth}
+        ground_truth_dict = {item_id: labels for item_id, labels, *_ in ground_truth}
         
-        # Validate that both datasets have the same item_ids
-        dataset_ids = {item_id for item_id, _ in dataset}
+        # Validate that both predictions and ground_truth have the same item_ids
+        prediction_ids = {item_id for item_id, _ in predictions}
         ground_truth_ids = set(ground_truth_dict.keys())
         
-        if dataset_ids != ground_truth_ids:
-            missing_in_dataset = ground_truth_ids - dataset_ids
-            missing_in_ground_truth = dataset_ids - ground_truth_ids
+        if prediction_ids != ground_truth_ids:
+            missing_in_predictions = ground_truth_ids - prediction_ids
+            missing_in_ground_truth = prediction_ids - ground_truth_ids
             raise DatasetError(
                 f"Mismatch in item_ids. "
-                f"Missing in dataset: {missing_in_dataset}. "
+                f"Missing in predictions: {missing_in_predictions}. "
                 f"Missing in ground_truth: {missing_in_ground_truth}."
             )
         
         exact_matches = 0
         partial_matches = 0
-        extra_in_dataset = 0
+        extra_in_predictions = 0
         extra_in_ground_truth = 0
         
-        for item_id, predicted_labels in dataset:
+        for item in predictions:
+            item_id, predicted_labels = item[:2]  # Extract id and labels
             true_labels = ground_truth_dict[item_id]
             
             # Calculate exact matches
@@ -155,18 +158,18 @@ class Model:
                 if set(predicted_labels) & set(true_labels):
                     partial_matches += 1
                 
-                # Calculate extra in dataset
-                extra_in_dataset += len(set(predicted_labels) - set(true_labels))
+                # Calculate extra in predictions
+                extra_in_predictions += len(set(predicted_labels) - set(true_labels))
                 
                 # Calculate extra in ground truth
                 extra_in_ground_truth += len(set(true_labels) - set(predicted_labels))
         
-        total_items = len(dataset)
+        total_items = len(predictions)
         
         return EvaluationMetrics(
             exact=exact_matches / total_items,
             partial=partial_matches / total_items,
-            false_positives=extra_in_dataset / total_items,
+            false_positives=extra_in_predictions / total_items,
             false_negatives=extra_in_ground_truth / total_items
         )
     
