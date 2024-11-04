@@ -205,7 +205,7 @@ class Model:
             parts = line.split("|")
             if len(parts) == 2:
                 result_text, labels_str = parts
-                labels = labels_str.split(", ")
+                labels = [label.lower() for label in labels_str.split(", ")]  # Lowercase each label
                 if return_confidences:
                     # Placeholder for confidence extraction logic
                     # TODO: Implement confidence extraction logic
