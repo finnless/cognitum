@@ -25,6 +25,7 @@ class DatasetManager:
         Raises:
             DatasetError: If data format is invalid
         """
+        # TODO handle input if list of lists or other formats
         self._validate_data(data)
         self.data = data
     
