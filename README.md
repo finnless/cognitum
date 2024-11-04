@@ -1,5 +1,7 @@
 # poll-classifier
 
+![Tests](https://github.com/roseinstitutecmc/poll-classifier/actions/workflows/python-tests.yml/badge.svg)
+
 ## Overview
 This project classifies free response poll issues using a chat language model. The input is a CSV file where each row is a response. The language model outputs a list of issues coded following the provided codebook.
 
@@ -260,11 +262,16 @@ Do this by getting embeddings for each response and then using a vector database
 
 Instruct to label 2 if not clear what the correct responce is supposed to be.
 
+for codebook 3.0, should send to llm with code names masked but descriptions included and examples, and ask to create new simple code names. the 1.0 names are not good or clear. using code names instead of numbers may have performance benefits.
+
 
 After reading [this](https://doi.org/10.1177/20531680241231468), we might want to use text codes instead of numeric codes.
 
 Followed [this course](https://learn.deeplearning.ai/courses/introducing-multimodal-llama-3-2) for prompting using proper chat tokens.
 
+
+
+Could also add another method for classification of dataset that uses pure vector-based classification.
 
 
 Can be used for other classification tasks.
