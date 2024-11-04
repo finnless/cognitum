@@ -81,18 +81,9 @@ Code these cases:
 class TestBritishExample(unittest.TestCase):
 
     def setUp(self):
-        # Start the subprocess to serve the model
-        self.proc1 = subprocess.Popen([
-            "lmql", "serve-model", 
-            "llama.cpp:../../../../models/Llama-3.2-3B-Instruct-Q4_0.gguf", 
-            "--n_ctx", "2048", 
-            "--n_gpu_layers", "-1"
-        ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
         # Initialize the LMQL model
         self.lmql_model = lmql.model(
-            "llama.cpp:../../../../models/Llama-3.2-3B-Instruct-Q4_0.gguf", 
-            tokenizer="meta-llama/Llama-3.2-3B-Instruct",
+            "openai/gpt-3.5-turbo-instruct",
         )
 
         # Example survey data
@@ -161,9 +152,7 @@ class TestBritishExample(unittest.TestCase):
         self.assertEqual(evaluation_metrics.false_positives, 0.0)
 
     def tearDown(self):
-        # Terminate the subprocess
-        self.proc1.terminate()
-        self.proc1.wait()
+        pass
 
 if __name__ == '__main__':
     unittest.main()
