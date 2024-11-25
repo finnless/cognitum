@@ -278,3 +278,11 @@ Can be used for other classification tasks.
 Like:
 Request for comment on policy
 Get valence (+ or -) and category of concern
+
+
+Review example articles that do AI classification and validate against human coders.
+
+Example:
+
+> Appendix B.2 provides examples of the resulting annotation. To validate this method, we compare the answers provided by GPT-engine to those provided by two independent research assistants for a random sample of 300 articles. Figure B2 shows that the agreement between Chat-GPT and a given human annotator is very similar to the agreement between two human annotators. We measure agreement by an accuracy score, i.e. the ratio of answers that are classified identically by GPT-engine and by the human annotator over the number of total answers. This lends confidence in the reliability of the method for this specific annotation task.23
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4680430#page=47.86
