@@ -286,3 +286,5 @@ Example:
 
 > Appendix B.2 provides examples of the resulting annotation. To validate this method, we compare the answers provided by GPT-engine to those provided by two independent research assistants for a random sample of 300 articles. Figure B2 shows that the agreement between Chat-GPT and a given human annotator is very similar to the agreement between two human annotators. We measure agreement by an accuracy score, i.e. the ratio of answers that are classified identically by GPT-engine and by the human annotator over the number of total answers. This lends confidence in the reliability of the method for this specific annotation task.23
 https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4680430#page=47.86
+
+Take a look at expected parrot. Possible alternative / inspiration: https://www.linkedin.com/pulse/adding-ai-your-r-data-analysis-pipeline-jeff-clement-czusc/
