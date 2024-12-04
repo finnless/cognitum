@@ -1,15 +1,15 @@
 **Title:** Build open-text social survey response coder library
 **Team:** Nolan
-**Project Description:** This project is a open source library that uses language models to code open-ended response questions often used in public opinion polling. The target audience for this project social science researches so the library will be easy to use. There will be features for setting a codebook, inputing survey responses, and validating the classifiers accuracy on manually label ground truth test data.
+**Project Description:** This project is an open-source library that uses language models to code open-ended survey responses. It is designed to be accessible to social science researchers. Features include setting a codebook, inputting survey responses, and validating classifier accuracy with labeled test data.
 
 **Rubric:**
 
 | **Percent of Grade** | **Task Description** |
 |----------------------|----------------------|
-| **15%** | **Project Setup and Environment Configuration**<br> - Develop a comprehensive `README.md` that includes clear instructions for setting up the environment, installing dependencies, and running the model. Ensure the setup process is smooth and reproducible. |
-| **25%** | **Model Implementation and Functionality**<br> - Implement the core model class to handle text classification tasks. Ensure the model can process datasets and return accurate predictions with or without confidence scores. |
-| **20%** | **Dataset Management**<br> - Develop a robust dataset manager to handle data loading, sampling, and hashing. Ensure the manager can efficiently process both valid and invalid data inputs. |
-| **15%** | **Experimental Component and CI/CD**<br> - Design and conduct experiments to evaluate the model's performance. This includes setting up test cases, running the model, and collecting results. Integrate these tests into a CI/CD pipeline to ensure all functionality is tested automatically on new commits. |
-| **10%** | **Error Handling and Validation**<br> - Implement comprehensive error handling and validation mechanisms for both the model and dataset components. Ensure that appropriate exceptions are raised and handled gracefully. |
-| **5%** | **Documentation and Code Quality**<br> - Maintain high-quality documentation throughout the codebase. This includes clear docstrings and inline comments. |
-| **10%** | **Publicizing and Sharing the Project**<br> - Share the project by writing a blog post, posting to Hacker News, and sharing on r/LocalLlama. Include a detailed project description and usage instructions in each post. |
+| **15%** | **Project Setup**<br> - Create a `README.md` with instructions for setting up the environment, installing dependencies, and running the model. The setup must be clear and reproducible and include example use cases. |
+| **25%** | **Model Implementation**<br> - Implement the core model class for text classification. It processes datasets and returns predictions with confidence scores. |
+| **20%** | **Data Loading**<br> - Develop a dataset loading feature to simplify data loading and sampling. It must handle both valid and invalid data inputs. |
+| **15%** | **Evaluation**<br> - Build evaluation pipeline that tests library performance. Run tests into a CI pipeline for automatic testing on new commits. |
+| **10%** | **Error Handling**<br> - Implement error handling and validation for the model and dataset components. Exceptions must be raised and handled gracefully. |
+| **5%** | **Documentation**<br> - Maintain clear documentation throughout the codebase, including docstrings and inline comments. |
+| **10%** | **Publicizing the Project**<br> - Share the project by posting to pypi, writing a blog post, posting to Hacker News, and sharing on r/LocalLlama. Include a project description and usage instructions in each post. |
