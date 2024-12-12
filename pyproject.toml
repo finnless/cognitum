@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cognitum"
+version = "0.0.1.dev1"
+authors = [
+  { name="Nolan Windham", email="nolanwindham@gmail.com" },
+]
+description = "A Python library for classifying free-text poll responses using large language models (LLMs)."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/finnless/cognitum"
+Issues = "https://github.com/finnless/cognitum/issues"
