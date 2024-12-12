@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cognitum"
-version = "0.0.1.dev1"
+version = "0.0.1.dev2"
 authors = [
   { name="Nolan Windham", email="nolanwindham@gmail.com" },
 ]
@@ -15,6 +15,14 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+]
+
+dependencies = [
+  "lmql[hf]",
+  "llama-cpp-python[server]",
+  "torch",
+  "torchvision",
+  "huggingface_hub[cli]",
 ]
 
 [project.urls]
