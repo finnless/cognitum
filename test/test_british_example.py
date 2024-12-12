@@ -1,6 +1,6 @@
 import unittest
-from poll_classifier.model import Model
-from poll_classifier.dataset import DatasetManager
+from cognitum.model import Model
+from cognitum.dataset import DatasetManager
 import lmql
 import subprocess
 

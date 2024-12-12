@@ -1,7 +1,7 @@
 import unittest
-from poll_classifier.dataset import DatasetManager
-from poll_classifier.types import DataItem
-from poll_classifier.exceptions import DatasetError
+from cognitum.dataset import DatasetManager
+from cognitum.types import DataItem
+from cognitum.exceptions import DatasetError
 
 class TestDatasetManager(unittest.TestCase):
 

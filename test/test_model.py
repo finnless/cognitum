@@ -1,8 +1,8 @@
 import unittest
 from unittest.mock import MagicMock
-from poll_classifier.model import Model
-from poll_classifier.types import Dataset, Predictions
-from poll_classifier.exceptions import ModelError
+from cognitum.model import Model
+from cognitum.types import Dataset, Predictions
+from cognitum.exceptions import ModelError
 
 class TestModel(unittest.TestCase):
 

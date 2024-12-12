@@ -1,5 +1,5 @@
 class PollClassifierError(Exception):
-    """Base exception for poll-classifier library."""
+    """Base exception for cognitum library."""
     pass
 
 class DatasetError(PollClassifierError):
