@@ -5,15 +5,104 @@
 
 
 ## Overview
-A Python library for classifying free-text poll responses using large language models (LLMs). The system takes CSV input where each row contains a response and outputs coded classifications according to a provided codebook.
+A Python library designed for social scientists and academic researchers to classify free-text data using large language models (LLMs). Cognitum streamlines the process of qualitative coding and content analysis by using AI to classify text according to researcher-defined codebooks.
 
 ## Features
+- Designed for academic research and qualitative analysis workflows
 - Flexible classification using LLMs (currently supports Llama and OpenAI models)
-- Support for single and multi-label classification
-- Confidence scores for predictions
-- Evaluation against ground truth data
-- Random sampling capabilities for testing
-- Support for reproducibility
+- Support for single and multi-label classification schemes
+- Confidence scores for predictions to support researcher validation
+- Evaluation against human-coded ground truth data
+- Random sampling capabilities for reliability testing
+- Support for reproducibility in research contexts
+
+## Common Applications
+- Coding open-ended survey responses
+- Content analysis of social media data
+- Policy document classification
+- Transcript coding
+- Qualitative data preprocessing
+
+
+## How Classification Works
+
+Here's an overview of the classification system:
+
+### The Classification Process
+
+When you submit text for classification (like survey responses or interview transcripts), Cognitum processes them in several steps:
+
+1. **Batch Processing**
+   - Rather than analyzing one response at a time, the system groups texts into small batches
+   - This makes the process more efficient and reduces computational costs
+
+2. **Prompting the AI**
+   - Each batch of texts is combined with your text coding instructions (the "prompt")
+   - The prompt tells the AI model how to classify the texts 
+   - Example:
+     ```python
+     prompt = """
+     Code these interview responses using the following scheme:
+     A: Economic concerns
+     B: Social issues
+     C: Political views
+     
+     Responses to code:
+     {text}
+     """
+     ```
+
+3. **AI Analysis**
+   - The system sends your texts and instructions to the AI model
+   - The model analyzes each text and assigns labels based on your coding scheme
+   - For each text, it can provide:
+     - Classification labels
+     - Confidence scores (how sure the model is about each classification)
+
+4. **Quality Control**
+   - The system verifies that each text got properly classified
+   - Any texts that weren't clearly classified are automatically reprocessed
+   - Results are matched back to your original data IDs
+
+For validation against human coding, the system can calculate standard metrics like exact matches, partial matches, and error rates.
+
+### Understanding AI Response Control
+
+A common challenge when working with AI models is ensuring they follow instructions precisely. Language models work by predicting what text should come next, similar to autocomplete but much more sophisticated. This can sometimes lead to:
+- Responses that drift off topic
+- Output in unexpected formats
+- Made-up or "hallucinated" information
+- Inconsistent labeling schemes
+
+Cognitum addresses this through "constrained generation," which essentially puts guardrails on what the AI can output:
+
+1. **Structured Output Format**
+   - The system requires responses in a specific format: `text|label`
+   - Example: `"The economy is getting worse"|economic_concerns`
+   - Cognitum guarantees that the model is only capable of outputting this format by constraining the token generation process
+
+2. **Predefined Label Sets**
+   - You specify exactly which classification labels are valid
+   - The model must choose from these labels only
+   - Example valid labels: `["economic_concerns", "social_issues", "political_views"]`
+
+3. **Token-Level Control**
+   - Rather than letting the model freely generate text, we control it at the most granular level (tokens)
+   - Each piece of the output must match our expected pattern
+   - This is like forcing the model to fill in a very specific template
+
+Here's a simplified example:
+```python
+# Traditional (unconstrained) AI response:
+"I think this text is talking about economic issues, specifically inflation..."
+
+# Cognitum's constrained response:
+"rising prices and job losses|economic_concerns"
+```
+
+
+Think of it like giving a human coder a standardized form to fill out rather than blank paper - it guides them to provide exactly the information you need in a format you can use.
+
 
 ## Installation
 

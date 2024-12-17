@@ -70,3 +70,9 @@ Example:
 https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4680430#page=47.86
 
 Take a look at expected parrot. Possible alternative / inspiration: https://www.linkedin.com/pulse/adding-ai-your-r-data-analysis-pipeline-jeff-clement-czusc/
+
+
+# TODO
+
+- [ ] Remove DatasetManager abstraction if all covered by pandas DataFrame.
+- [ ] Change example to use real data.
